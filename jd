@@ -1,0 +1,50 @@
+#!/bin/python
+# -*- coding: utf8 -*-
+import sys
+import os
+import re
+
+#请完成下面这个函数，实现题目要求的功能
+#当然，你也可以不按照下面这个模板来作答，完全按照自己的想法来 ^-^ 
+#******************************开始写代码******************************
+
+def replace(SS,TT):
+    if len(set(list(SS)))!=len(set(list(TT))):
+        return '0'
+    else:
+        set_SS=[]
+        for i in range(len(SS)):
+            if SS[i] not in set_SS:
+                set_SS.append(SS[i])
+        for j in range(len(set_SS)):
+            SS=SS.replace(set_SS[j],TT[j])
+        return SS
+
+def  solve(S, T):
+    if len(S)>100000:
+        return 0
+    len_T=len(T)
+    result=[]
+    for i in range(len(S)):
+        compar_S=S[i:i+len_T]
+        if replace(compar_S,T)==T:
+            result.append(compar_S)
+    return len(set(result))
+
+#******************************结束写代码******************************
+
+
+try:
+    _S = input()
+except:
+    _S = None
+
+try:
+    _T = input()
+except:
+    _T = None
+
+  
+res = solve(_S, _T)
+
+print(str(res) + "\n")
